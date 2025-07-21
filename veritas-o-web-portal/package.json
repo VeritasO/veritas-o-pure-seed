@@ -1,0 +1,37 @@
+{
+  "name": "veritas-o-web-portal",
+  "version": "1.0.0",
+  "description": "A web portal for the VERITAS.O project, featuring emotional mapping and narrative truth processing.",
+  "main": "src/server/index.ts",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "start": "node dist/server/index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^5.2.0",
+    "tailwindcss": "^2.2.19"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.2",
+    "typescript": "^4.4.4",
+    "vite": "^2.6.4",
+    "postcss": "^8.3.6",
+    "autoprefixer": "^10.3.1"
+  },
+  "keywords": [
+    "veritas",
+    "web",
+    "portal",
+    "emotional mapping",
+    "narrative truth"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
