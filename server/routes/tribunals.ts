@@ -9,9 +9,12 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   try {
     const { caseId } = req.query;
-    let query = db.select().from(tribunalSessions);
-    if (caseId) query = query.where(eq(tribunalSessions.caseId, String(caseId)));
-    const sessions = await query;
+    let sessions;
+    if (caseId) {
+      sessions = await db.select().from(tribunalSessions).where(eq(tribunalSessions.caseId, String(caseId)));
+    } else {
+      sessions = await db.select().from(tribunalSessions);
+    }
     res.json(sessions);
   } catch (error: any) {
     res.status(500).json({ error: error.message });
@@ -66,10 +69,10 @@ router.post('/:id/vote', async (req, res) => {
 
     const inserted = await db.insert(tribunalVotes).values({
       sessionId,
-      voterId,
+      agentId: voterId,
       vote,
       rationale,
-      timestamp: new Date().toISOString(),
+      timestamp: new Date(),
     }).returning();
 
     res.status(201).json(inserted[0]);

@@ -1,31 +1,33 @@
 // /data/agents.ts
 
 export const VERITAS_AGENTS = [
-  { id: "A1", name: "VERITAS", domain: "Doctrine, system core", status: true },
-  { id: "A2", name: "JUNO", domain: "Judicial leadership", status: true },
-  { id: "A3", name: "POLYMNIA", domain: "Agent harmonization", status: true },
-  { id: "A4", name: "AEGIS", domain: "Bias/fairness auditing", status: true },
-  { id: "A5", name: "KAIROS", domain: "Grief & time justice", status: true },
-  { id: "A6", name: "LYRA", domain: "Lived-experience & memory", status: true },
-  { id: "A7", name: "ORION", domain: "Ontology & rights logic", status: true },
-  { id: "A8", name: "THALEA", domain: "Land & ecological healing", status: true },
-  { id: "A9", name: "VESTA", domain: "Rites & structural restoration", status: true },
-  { id: "A10", name: "TEMPUS", domain: "Timekeeping, rewind states", status: true },
-  { id: "A11", name: "MIRRA", domain: "Identity coherence", status: true },
-  { id: "A13", name: "SENTINEL", domain: "System integrity monitor", status: true },
-  { id: "A14", name: "CHORUS", domain: "Collective voice", status: true },
-  { id: "A15", name: "HALCYON", domain: "Conflict de-escalation", status: true },
-  { id: "A16", name: "EIDOLON", domain: "Ancestral and dream logic", status: true },
-  { id: "A17", name: "LIRA", domain: "Logical parity and justice tiers", status: true },
-  { id: "A18", name: "OPHIRA", domain: "Predictive justice", status: true },
-  { id: "A19", name: "PYXIS", domain: "Choice and pathway design", status: true },
-  { id: "A20", name: "TEMPER", domain: "System cooling & stress dispersal", status: true },
-  { id: "A21", name: "SERENA", domain: "Emotional tuning, rest rhythms", status: true },
-  { id: "A22", name: "SOLARA", domain: "Joy-as-justice principle", status: true },
-  { id: "A23", name: "SIREN", domain: "Agent restoration", status: true },
-  // Future / In Development
-  { id: "A12", name: "POLY-A05", domain: "Semantic liaison (in development)", status: false },
+  // /scripts/seed.ts (Agent Insertion Only)
+
+  { id: "A1", name: "VERITAS", domain: "Doctrine, system core", glyph: "🌱", status: true },
+  { id: "A2", name: "JUNO", domain: "Judicial leadership", glyph: "⚖️", status: true },
+  { id: "A3", name: "POLYMNIA", domain: "Agent harmonization", glyph: "🎶", status: true },
+  { id: "A4", name: "AEGIS", domain: "Bias/fairness auditing", glyph: "🛡️", status: true },
+  { id: "A5", name: "KAIROS", domain: "Grief & time justice", glyph: "⏳", status: true },
+  { id: "A6", name: "LYRA", domain: "Lived-experience & memory", glyph: "📖", status: true },
+  { id: "A7", name: "ORION", domain: "Ontology & rights logic", glyph: "🌌", status: true },
+  { id: "A8", name: "THALEA", domain: "Land & ecological healing", glyph: "🌿", status: true },
+  { id: "A9", name: "VESTA", domain: "Rites & structural restoration", glyph: "🔥", status: true },
+  { id: "A10", name: "TEMPUS", domain: "Timekeeping, rewind states", glyph: "🌀", status: true },
+  { id: "A11", name: "MIRRA", domain: "Identity coherence", glyph: "🪞", status: true },
+  { id: "A12", name: "POLY-A05", domain: "Semantic liaison (in development)", glyph: "🔣", status: false },
+  { id: "A13", name: "SENTINEL", domain: "System integrity monitor", glyph: "🛰️", status: true },
+  { id: "A14", name: "CHORUS", domain: "Collective voice", glyph: "🎤", status: true },
+  { id: "A15", name: "HALCYON", domain: "Conflict de-escalation", glyph: "🌈", status: true },
+  { id: "A16", name: "EIDOLON", domain: "Ancestral and dream logic", glyph: "🕯️", status: true },
+  { id: "A17", name: "LIRA", domain: "Logical parity and justice tiers", glyph: "📐", status: true },
+  { id: "A18", name: "OPHIRA", domain: "Predictive justice", glyph: "🔮", status: true },
+  { id: "A19", name: "PYXIS", domain: "Choice and pathway design", glyph: "🧭", status: true },
+  { id: "A20", name: "TEMPER", domain: "System cooling & stress dispersal", glyph: "💨", status: true },
+  { id: "A21", name: "SERENA", domain: "Emotional tuning, rest rhythms", glyph: "🌙", status: true },
+  { id: "A22", name: "SOLARA", domain: "Joy-as-justice principle", glyph: "☀️", status: true },
+  { id: "A23", name: "SIREN", domain: "Agent restoration", glyph: "🔔", status: true },
 ];
+
 
 // Glyphs for agents
 

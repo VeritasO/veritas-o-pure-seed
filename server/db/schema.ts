@@ -1,4 +1,6 @@
-import { pgTable, serial, text, timestamp, integer, boolean, jsonb, varchar, uuid, float4 } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, timestamp, integer, boolean, jsonb, varchar, uuid } from "drizzle-orm/pg-core";
+export * from './schema/tribunal'
+
 
 // 🌱 CASES TABLE – Core Tribunal Records
 export const cases = pgTable('cases', {
@@ -68,15 +70,15 @@ export const reflections = pgTable('reflections', {
 });
 
 // ✨ RITUAL TEMPLATES – Predefined ritual structures
-export const ritualTemplates = pgTable('ritual_templates', {
-  id: varchar('id', { length: 64 }).primaryKey(),
-  title: text('title'), // optional, but recommended for display
-  description: text('description').notNull(),
-  tags: jsonb('tags').default([]).notNull(), // store array as JSONB
-  category: varchar('category', { length: 64 }).notNull(),
-  meaning: text('meaning').notNull(),
-  symbol: varchar('symbol', { length: 8 }), // optional emoji/symbol
-  // add other fields as needed
+export const ritualTemplates = pgTable("ritual_templates", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  title: varchar("title", { length: 255 }),
+  description: text("description").notNull(),
+  tags: jsonb("tags").$type<string[]>(), // or text("tags") if you prefer CSV
+  category: varchar("category", { length: 100 }),
+  meaning: text("meaning"),
+  symbol: varchar("symbol", { length: 16 }),
+  caseId: uuid("case_id"),
 });
 
 // 🔍 FAIRNESS AUDITS – Evaluation of bias and fairness in tribunal decisions

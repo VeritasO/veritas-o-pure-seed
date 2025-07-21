@@ -244,8 +244,7 @@ export const BOOKS_BY_ID_AND_TITLE = BOOKS.reduce((acc, book) => {
   acc[book.title] = book;
   return acc;
 }, {} as Record<string, typeof BOOKS[number]>);
-export const BOOKS_BY_ID_AND_TITLE_WITH_GLYPHS = BOOKS_WITH_GLYPHS
-PHS.reduce((acc, book) => {
+export const BOOKS_BY_ID_AND_TITLE_WITH_GLYPHS = BOOKS_WITH_GLYPHS.reduce((acc, book) => {
   acc[book.id] = book;
   acc[book.title] = book;
   return acc;
@@ -255,4 +254,4 @@ export const BOOKS_BY_ORDER_AND_TITLE = BOOKS.reduce((acc, book) => {
   acc[book.title] = book;
   return acc;
 }, {} as Record<number | string, typeof BOOKS[number]>);
-export const BOOKS_BY_ORDER_AND_TITLE_WITH_GLYPHS = BOOKS_WITH_GLY
+export const BOOKS_BY_ORDER_AND_TITLE_WITH_GLYPHS = BOOKS_WITH_GLYPHS

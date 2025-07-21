@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { db } from '@/server/db'
+import { db } from '../server/db'
 import { verdicts } from '@/server/db/schema'
 
 export async function GET() {
