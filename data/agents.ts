@@ -96,3 +96,5 @@ export const AGENTS_BY_NAME = VERITAS_AGENTS.reduce((acc, agent) => {
   acc[agent.name] = agent;
   return acc;
 }, {} as Record<string, typeof VERITAS_AGENTS[number]>);
+
+export const AGENTS = VERITAS_AGENTS;

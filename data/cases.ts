@@ -171,3 +171,22 @@ export const CASES_BY_STATUS = CASE_TEMPLATES.reduce<Record<string, TribunalCase
   acc[c.status].push(c);
   return acc;
 }, {});
+
+/**
+ * Session data for tribunal proceedings
+ */
+export const SESSIONS = [
+  {
+    id: '001',
+    status: 'active',
+    verdict: 'Restoration',
+    participants: ['JUNO', 'LYRA', 'MIRRA']
+  },
+  {
+    id: '002',
+    status: 'pending',
+    verdict: '',
+    participants: ['TEMPUS', 'VESTA']
+  }
+  // ...add more sessions as needed
+];

@@ -23,6 +23,7 @@ export interface Ritual {
   steps: RitualStep[];          // Ordered procedural steps to perform the ritual
   sealingRequired: boolean;     // Whether ritual completion requires VESTA sealing
   typicalAgentsInvolved: string[]; // Agent IDs commonly invoking or participating
+  griefTier?: 'low' | 'medium' | 'high'; // Optional grief tier classification
 }
 
 /** 
@@ -43,7 +44,8 @@ export const RITUALS: Ritual[] = [
       { order: 4, description: "VESTA performs symbolic sealing of the anchor." },
     ],
     sealingRequired: true,
-    typicalAgentsInvolved: ["A2", "A5", "A8", "A9", "A10"]
+    typicalAgentsInvolved: ["A2", "A5", "A8", "A9", "A10"],
+    griefTier: 'high'
   },
   {
     id: "R002",
@@ -59,7 +61,8 @@ export const RITUALS: Ritual[] = [
       { order: 4, description: "VESTA seals restoration intent with ritual marks." },
     ],
     sealingRequired: true,
-    typicalAgentsInvolved: ["A6", "A8", "A9"]
+    typicalAgentsInvolved: ["A6", "A8", "A9"],
+    griefTier: 'medium'
   },
   {
     id: "R003",
@@ -75,7 +78,8 @@ export const RITUALS: Ritual[] = [
       { order: 4, description: "Mirror Clause enacted with ritual sealing by VESTA." },
     ],
     sealingRequired: true,
-    typicalAgentsInvolved: ["A1", "A2", "A11", "A13", "A9"]
+    typicalAgentsInvolved: ["A1", "A2", "A11", "A13", "A9"],
+    griefTier: 'low'
   },
   {
     id: "R004",
@@ -91,7 +95,8 @@ export const RITUALS: Ritual[] = [
       { order: 4, description: "VESTA seals ceremony with symbolic marks." },
     ],
     sealingRequired: true,
-    typicalAgentsInvolved: ["A9", "A11", "A23"]
+    typicalAgentsInvolved: ["A9", "A11", "A23"],
+    griefTier: 'medium'
   },
   {
     id: "R005",
@@ -107,7 +112,8 @@ export const RITUALS: Ritual[] = [
       { order: 4, description: "VESTA seals corrective actions with symbolic enforcement." },
     ],
     sealingRequired: true,
-    typicalAgentsInvolved: ["A2", "A4", "A9"]
+    typicalAgentsInvolved: ["A2", "A4", "A9"],
+    griefTier: 'low'
   }
 ];
 

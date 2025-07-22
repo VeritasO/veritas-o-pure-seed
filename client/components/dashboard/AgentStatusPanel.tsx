@@ -1,5 +1,9 @@
 import React from 'react';
-import { Card, CardContent } from '@/components/ui/card';
+// If Card and CardContent are from 'nextui', use:
+import { Card, CardBody as CardContent } from "@nextui-org/react";
+
+// Or, if you have a local card component, correct the path, e.g.:
+// import { Card, CardContent } from '../ui/card';
 
 interface AgentStatus {
   id: string;

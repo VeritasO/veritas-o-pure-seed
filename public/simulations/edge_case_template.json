@@ -1,0 +1,41 @@
+{
+  "simulationType": "Narrative Complexity",
+  "initiator": "User123",
+  "affected": "Witness456",
+  "community": "Circle of Memory",
+  "description": "A user uploads a fragmented memory sequence involving misinterpretation and shame. The narrative lacks closure.",
+  "timeFactors": {
+    "incidentDate": "2023-03-14",
+    "responseDelay": "6 months",
+    "griefPhase": "Integrating"
+  },
+  "primaryQuestion": "What response helps resolve fragmented memory without retraumatization?",
+  "agents": {
+    "JUNO": "Suggested symbolic tribunal for fractured memory loops.",
+    "LYRA": "Validated emotional resonance via poetic retelling.",
+    "KAIROS": "Highlighted time-dislocation in the memory event.",
+    "AEGIS": "Detected no systemic bias.",
+    "MIRRA": "Flagged contradiction in perceived vs. actual intent.",
+    "VESTA": "Recommended Echo Ceremony.",
+    "THALEA": "Called for land walk + grief placement."
+  },
+  "verdict": "Invite the witness to ritual storytelling where both memory fragments and silence are honored equally.",
+  "reconciliationOptions": [
+    "Guided memory retelling with LYRA agent support",
+    "Public sharing (opt-in)",
+    "Land-based grief symbol placement",
+    "Narrative collage creation",
+    "Written forgiveness exchange (non-coercive)"
+  ],
+  "harmonyIndexChange": {
+    "before": 0.82,
+    "after": 0.93
+  },
+  "symbolicActions": {
+    "echoCeremony": true,
+    "sanctuaryPause": false,
+    "publicDeclaration": false,
+    "griefMapping": true,
+    "landOffering": true
+  }
+}

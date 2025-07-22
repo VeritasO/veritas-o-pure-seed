@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { db } from '@/server/db'
-import { fairnessAudits } from '@/server/db/schema'
+import { db } from '../db'
+import { fairnessAudits } from '../db/schema'
 
 export async function GET() {
   const audits = await db.select().from(fairnessAudits)

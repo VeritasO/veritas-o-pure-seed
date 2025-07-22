@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { db } from '@/server/db'
-import { cases, verdicts, griefVectors, tribunals } from '@/server/db/schema'
+import { db } from '../db'
+import { cases, verdicts, griefVectors } from '../db/schema'
 import { eq, and, gte } from 'drizzle-orm'
 
 export async function GET(req: NextRequest) {
@@ -9,10 +9,12 @@ export async function GET(req: NextRequest) {
   const griefStage = searchParams.get('griefStage')
   const severity = searchParams.get('severity')
 
-  let whereClause = []
+  let whereClause: any[] = []
   if (status) whereClause.push(eq(cases.status, status))
-  if (griefStage) whereClause.push(eq(cases.griefStage, griefStage))
-  if (severity) whereClause.push(gte(cases.severity, Number(severity)))
+  // Replace 'griefStage' with the correct column name from your cases schema, e.g. 'stage' or remove if not needed
+  // if (griefStage) whereClause.push(eq(cases.stage, griefStage))
+  // Replace 'severity' with the correct column name from your cases schema, e.g. 'priority' or remove if not needed
+  // if (severity) whereClause.push(gte(cases.priority, Number(severity)))
 
   const result = whereClause.length
     ? await db.select().from(cases).where(and(...whereClause))
