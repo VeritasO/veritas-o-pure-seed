@@ -1,9 +1,11 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { Card, CardContent } from '@/components/ui/card'
-import { Skeleton } from '@/components/ui/skeleton'
+import { Card, CardContent } from '../components/ui/card'
+// import { Skeleton } from '@/components/ui/skeleton'
+import { Skeleton } from '../components/ui/skeleton'
 import { Badge } from '@/components/ui/badge'
+import SymbolicRitualScheduler from '@/components/rituals/SymbolicRitualScheduler'
 
 interface Ritual {
   id: string
@@ -104,6 +106,15 @@ export default function RitualGlossaryPage() {
             </CardContent>
           </Card>
         ))}
+      </div>
+
+      <div className="mt-10">
+        <h2 className="text-2xl font-bold mb-4">🔥 Ritual Scheduler</h2>
+        <p className="text-gray-600 mb-6">
+          Manage Echo Ceremonies, Sanctuary Pauses, and symbolic closure workflows.
+        </p>
+
+        <SymbolicRitualScheduler />
       </div>
     </div>
   )

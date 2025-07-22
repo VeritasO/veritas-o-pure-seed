@@ -4,7 +4,13 @@ import TribunalPanel from '@/components/TribunalPanel'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
-import SymbolicRitualScheduler from '@/components/SymbolicRitualScheduler'
+// import SymbolicRitualScheduler from '@/components/SymbolicRitualScheduler'
+
+const agentTabs = [
+  { id: 'LYRA', label: 'LYRA: Memory & Narrative' },
+  { id: 'AEGIS', label: 'AEGIS: Fairness Audit' },
+  { id: 'KAIROS', label: 'KAIROS: Grief Logic' },
+]
 
 export default function CaseDetailPage() {
   const router = useRouter()
@@ -13,6 +19,7 @@ export default function CaseDetailPage() {
   const [reflections, setReflections] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [showRitual, setShowRitual] = useState(false)
+  const [activeTab, setActiveTab] = useState('LYRA')
 
   useEffect(() => {
     if (!id) return
@@ -39,17 +46,47 @@ export default function CaseDetailPage() {
               <p className="text-xs text-gray-400">Submitted: {new Date(caseData.submittedAt).toLocaleString()}</p>
             </div>
 
-            <div className="space-y-2">
-              <h2 className="text-lg font-semibold">Narrative Reflections (LYRA)</h2>
-              {reflections.length > 0 ? (
-                <ul className="list-disc pl-5">
-                  {reflections.map((r, i) => (
-                    <li key={i} className="text-sm text-gray-700">{r.notes ?? r.text}</li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="text-sm italic text-gray-400">No reflections submitted yet.</p>
-              )}
+            <div className="pt-2">
+              <div className="flex space-x-2 mb-3">
+                {agentTabs.map(tab => (
+                  <button
+                    key={tab.id}
+                    className={`px-3 py-1 rounded-md ${
+                      activeTab === tab.id ? 'bg-blue-600 text-white' : 'bg-gray-200'
+                    }`}
+                    onClick={() => setActiveTab(tab.id)}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
+
+              <div className="p-4 bg-gray-50 rounded-md shadow-inner">
+                {activeTab === 'LYRA' && (
+                  <div>
+                    <h2 className="text-lg font-semibold mb-2">Narrative Reflections (LYRA)</h2>
+                    {reflections.length > 0 ? (
+                      <ul className="list-disc pl-5">
+                        {reflections.map((r, i) => (
+                          <li key={i} className="text-sm text-gray-700">{r.notes ?? r.text}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-sm italic text-gray-400">No reflections submitted yet.</p>
+                    )}
+                  </div>
+                )}
+                {activeTab === 'AEGIS' && (
+                  <p>
+                    AEGIS is running a fairness and bias audit. It flags imbalance, symbolic weighting errors, or exclusion logic.
+                  </p>
+                )}
+                {activeTab === 'KAIROS' && (
+                  <p>
+                    KAIROS is interpreting the grief timeline, assessing urgency, reversibility, and harm rhythm. Temporal justice is being modeled.
+                  </p>
+                )}
+              </div>
             </div>
 
             {showRitual && (
