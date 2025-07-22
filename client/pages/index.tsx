@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
-import { ScalesIcon, BookOpenIcon, UsersIcon, RefreshCcwIcon, PlayCircleIcon, DownloadIcon, ActivityIcon } from 'lucide-react'
-import SymbolicHero from '../components/SymbolicHero'
+import { Button } from '../components/ui/button'
+import { Card, CardContent } from '../components/ui/card'
+import { ScaleIcon, BookOpenIcon, UsersIcon, RefreshCcwIcon, PlayCircleIcon, DownloadIcon, ActivityIcon } from 'lucide-react'
+// import SymbolicHero from '../components/SymbolicHero'
 import QuickActionsPanel from '../components/QuickActionsPanel'
 import AgentSignalPanel from '../components/agents/AgentSignalPanel'
 
@@ -75,7 +75,7 @@ export default function Home() {
 
         <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {[
-            { href: '/tribunal', icon: ScalesIcon, label: 'Tribunal Room', role: 'all' },
+            { href: '/tribunal', icon: ScaleIcon, label: 'Tribunal Room', role: 'all' },
             { href: '/agents', icon: UsersIcon, label: 'Agent Council', role: 'all' },
             { href: '/books', icon: BookOpenIcon, label: 'Sacred Books', role: 'all' },
             { href: '/simulations', icon: PlayCircleIcon, label: 'Edge Case Simulations', role: 'all' },
@@ -104,7 +104,7 @@ export default function Home() {
           </Link>
         </div>
       </div>
-      <SymbolicHero />
+      {/* <SymbolicHero /> */}
       <QuickActionsPanel />
       <AgentSignalPanel />
     </main>

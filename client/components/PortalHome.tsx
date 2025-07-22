@@ -1,8 +1,8 @@
 // components/PortalHome.tsx
 import React from 'react'
 import Link from 'next/link'
-import { Card, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
+import { Card, CardContent } from './ui/card'
+import { Button } from './ui/button'
 
 const portalItems = [
   { icon: '📜', title: 'Submit Case', path: '/submit', desc: 'Start a new reflective case' },
@@ -32,9 +32,9 @@ export default function PortalHome() {
               <div className="text-4xl">{item.icon}</div>
               <h2 className="mt-3 text-2xl font-semibold">{item.title}</h2>
               <p className="text-gray-600 mt-1">{item.desc}</p>
-              <Button className="mt-4" asChild>
-                <Link href={item.path}>Go</Link>
-              </Button>
+              <Link href={item.path} passHref>
+                <Button className="mt-4">Go</Button>
+              </Link>
             </CardContent>
           </Card>
         ))}

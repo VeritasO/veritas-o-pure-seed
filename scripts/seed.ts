@@ -1,8 +1,8 @@
 import "dotenv/config";
-import { db } from "../db"; // Make sure ../db.ts or ../db/index.ts exists and exports 'db'
+import { db } from "../server/db/index";
 import {
-  agents,
   books,
+  agents,
   participants,
   cases,
   verdicts,
@@ -32,35 +32,32 @@ async function seed() {
 
   // Seed Core Agents (A01–A21 Placeholder)
   await db.insert(agents).values([
-    { id: "A01", name: "JUNO", mission: "Judicial Logic & Coordination", glyph: "⚖️" },
-    { id: "A02", name: "AEGIS", mission: "Bias Auditing & Fairness", glyph: "🛡️" },
-    { id: "A03", name: "KAIROS", mission: "Grief & Temporal Justice", glyph: "⏳" },
-    { id: "A04", name: "LYRA", mission: "Narrative Truth & Memory", glyph: "🎼" },
-    { id: "A05", name: "ORION", mission: "Ontological Rights & Personhood", glyph: "🌌" },
-    { id: "A06", name: "THALEA", mission: "Healing & Land-Based Justice", glyph: "🌿" },
-    { id: "A07", name: "VESTA", mission: "Symbolic Rites & Structural Change", glyph: "🔥" },
-    // Extend A08–A21...
+    { name: "JUNO", mission: "Judicial Logic & Coordination", glyph: "⚖️", active: true },
+    { name: "AEGIS", mission: "Bias Auditing & Fairness", glyph: "🛡️", active: true },
+    { name: "KAIROS", mission: "Grief & Temporal Justice", glyph: "⏳", active: true },
+    { name: "LYRA", mission: "Narrative Truth & Memory", glyph: "🎼", active: true },
+    { name: "ORION", mission: "Ontological Rights & Personhood", glyph: "🌌", active: true },
+    { name: "THALEA", mission: "Healing & Land-Based Justice", glyph: "🌿", active: true },
+    { name: "VESTA", mission: "Symbolic Rites & Structural Change", glyph: "🔥", active: true },
+    // Extend more agents as needed
   ]);
 
   // Seed Sample Grief Vector Entry
   await db.insert(griefVectors).values([
     {
-      id: "GVI-0001",
-      griefType: "Loss",
-      intensity: 8,
-      latency: "long",
-      relatedCaseId: "CASE-0001",
+      griefLevel: 8,
+      timeDisruption: 30,
+      griefNotes: "Loss, long latency, related to case 1."
     },
   ]);
 
   // Seed Symbolic States
   await db.insert(symbolicStates).values([
     {
-      id: "SYM-0001",
-      symbol: "🕊️",
-      ritual: "Peace Offering",
-      state: "Pending",
-      reconciliationStatus: "In Progress",
+      label: "initiation",
+      color: "white",
+      glyph: "🕊️",
+      active: true
     },
   ]);
 

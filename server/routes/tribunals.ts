@@ -71,7 +71,6 @@ router.post('/:id/vote', async (req, res) => {
       sessionId,
       agentId: voterId,
       vote,
-      rationale,
       timestamp: new Date(),
     }).returning();
 

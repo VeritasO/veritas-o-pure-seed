@@ -2,7 +2,6 @@ import "dotenv/config";
 import { db } from "./index";
 import {
   agents,
-  // books, // Removed because 'books' is not exported from './schema'
   participants,
   cases,
   verdicts,
@@ -11,10 +10,13 @@ import {
   ritualTemplates,
   fairnessAudits,
 } from "./schema";
+// import { books } from "./schema/books"; // Removed: use books from './schema'
 import { tribunalSessions, tribunalDialogues, tribunalVotes } from "./schema/tribunal";
 import { v4 as uuidv4 } from "uuid";
 import { AGENTS } from "../../data/agents";
 import { BOOKS, BOOKS_BY_ID } from "../../data/books";
+import { books } from "../../scripts/schema";
+// import books from "../../pages/api/books"; // Removed: use books from './schema'
 
 const caseIds = [
   "case-uuid-1",
@@ -46,12 +48,14 @@ function randomDateInLast6Months() {
 }
 
 const seedFairnessAudits = Array.from({ length: 12 }).map((_, i) => ({
+  id: i + 1,
+  created_at: randomDateInLast6Months(),
   case_id: caseIds[Math.floor(Math.random() * caseIds.length)],
   agent_id: agentIds[Math.floor(Math.random() * agentIds.length)],
-  audit_date: randomDateInLast6Months(),
   dimension: dimensions[Math.floor(Math.random() * dimensions.length)],
   score: Math.round((Math.random() * 0.5 + 0.5) * 100) / 100, // 0.5–1.0
   comments: `Mock audit comment #${i + 1}`,
+  // Add other required fields from your fairnessAudits schema here if needed
 }));
 
 async function seed() {
@@ -76,7 +80,12 @@ async function seed() {
 
   // Seed Core Agents (A01–A21 Placeholder)
   // /scripts/seed.ts (Agent Insertion Only)
-await db.insert(agents).values(AGENTS);
+await db.insert(agents).values(
+  AGENTS.map(({ id, ...rest }, idx) => ({
+    ...rest,
+    id: typeof id === "string" ? idx + 1 : id, // convert string id to number or keep as is
+  }))
+);
 
 
   // Seed Sample Grief Vector Entry
@@ -86,18 +95,17 @@ await db.insert(agents).values(AGENTS);
       griefLevel: 8,
       timeDisruption: 0,
       griefNotes: "Loss",
-      relatedCaseId: 1,
     },
   ]);
 
   // Seed Symbolic States
   await db.insert(symbolicStates).values([
     {
-      id: "SYM-0001",
-      symbol: "🕊️",
-      ritual: "Peace Offering",
-      state: "Pending",
-      reconciliationStatus: "In Progress",
+      id: 1,
+      label: "Peace Offering",
+      color: "#AEEEEE",
+      glyph: "🕊️",
+      active: true,
     },
   ]);
 
@@ -164,11 +172,9 @@ await db.insert(agents).values(AGENTS);
 
   // --- Tribunal Session ---
   await db.insert(cases).values({
-    id: "mock_case_001",
     title: "Test Tribunal: Symbolic Enactment Dispute",
     status: "open",
-    openedAt: new Date("2025-07-21T09:54:45.521553Z"),
-    // Add other required fields if your schema needs them (e.g., description, participantId, etc.)
+    // Add other required fields from your cases schema here (e.g., description, participantId, etc.)
   });
 
   await db.insert(tribunalSessions).values({

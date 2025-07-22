@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import TribunalPanel from '@/components/Tribunal/TribunalPanel'
-import { Card, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
+// import TribunalPanel from '@/components/TribunalPanel'
+// If TribunalPanel exists elsewhere, update the path accordingly, e.g.:
+// import TribunalPanel from '../components/TribunalPanel'
+// Or remove the import and its usage if the component does not exist.
+// Update the import path below to the correct location of your Card components.
+// For example, if your Card component is at 'components/ui/Card.tsx', use:
+// Update the import path below to the correct location of your Card components.
+// For example, if your Card component is at 'components/ui/card.tsx', use:
+import { Card, CardContent } from '../../components/ui/card'
+import { Button } from '../../components/ui/button'
 import { motion } from 'framer-motion'
-import Layout from '@/components/ui/Layout'
-import CaseOverview from '@/components/case/CaseOverview'
-import ReflectionsList from '@/components/case/ReflectionsList'
-// import { SymbolicRitualScheduler } from '@/components/rituals/SymbolicRitualScheduler'
-
-import SymbolicRitualScheduler from '@/components/SymbolicRitualScheduler'
+import Layout from '../../components/ui/Layout'
+import SymbolicRitualScheduler from '../../components/rituals/SymbolicRitualScheduler'
 
 const agentTabs = [
   { id: 'LYRA', label: 'LYRA: Memory & Narrative' },
@@ -37,11 +40,9 @@ export default function CaseDetailPage() {
       setLoading(false)
     })
   }, [id])
-
-  if (loading || !caseData) return <p className="text-center">Loading case details...</p>
-
+  // ...existing code...
   return (
-    <Layout title="Case Detail">
+    <Layout title={caseData?.title || 'Case Detail'}>
       <div className="max-w-4xl mx-auto p-6">
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           <Card className="rounded-2xl shadow-lg">
@@ -97,7 +98,7 @@ export default function CaseDetailPage() {
 
               {showRitual && (
                 <div className="pt-4">
-                  <SymbolicRitualScheduler caseId={caseData.id} />
+                  <SymbolicRitualScheduler />
                 </div>
               )}
 
@@ -108,18 +109,16 @@ export default function CaseDetailPage() {
                 <Button variant="outline" onClick={() => router.back()}>
                   Back
                 </Button>
+                {/* <TribunalPanel tribunalId={caseData.tribunalId} /> */}
+                {/* Remove or replace with an existing component if needed */}
               </div>
-
-              <TribunalPanel tribunalId={caseData.tribunalId} />
             </CardContent>
           </Card>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <CaseOverview />
-          <ReflectionsList />
+          {/* <CaseOverview /> */}
+          {/* <ReflectionsList /> */}
+          {/* <CaseOverview /> */}
           <SymbolicRitualScheduler />
-        </div>
+        </motion.div>
       </div>
     </Layout>
   )

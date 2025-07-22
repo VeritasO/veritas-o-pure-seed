@@ -1,8 +1,8 @@
 // /client/components/SymbolicRitualScheduler.tsx
 import { useEffect, useState } from 'react'
-import { Card, CardContent } from '@/components/ui/card'
+import { Card, CardContent } from '../components/ui/card'
 import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/button'
+import { Button } from '../components/ui/button'
 
 interface Props {
   caseId: string

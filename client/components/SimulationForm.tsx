@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 
-const defaultParameters = {
+type SimulationParameters = {
+  scenarioType: string;
+  griefPhase: string;
+  timeLagMonths: number;
+  involvedAgents: string[];
+  narrativePrompt: string;
+};
+
+const defaultParameters: SimulationParameters = {
   scenarioType: 'random',
   griefPhase: 'neutral',
   timeLagMonths: 0,
@@ -11,8 +19,8 @@ const defaultParameters = {
 const SCENARIO_TYPES = ['random', 'parameterized'];
 const GRIEF_PHASES = ['neutral', 'rising', 'peak', 'fading'];
 
-export default function SimulationForm({ onRun, loading }) {
-  const [inputs, setInputs] = useState(defaultParameters);
+export default function SimulationForm({ onRun, loading }: { onRun: (params: SimulationParameters) => void; loading: boolean }) {
+  const [inputs, setInputs] = useState<SimulationParameters>(defaultParameters);
 
   function handleChange(e) {
     const { name, value, type, checked } = e.target;

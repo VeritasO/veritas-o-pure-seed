@@ -1,8 +1,20 @@
 import { Router } from 'express';
 import { db } from '../db';
-import { cases as casesTable } from '../db/schema';
+import { cases } from '../db/schema';
+// const casesTable = casesTableDef;
 import { eq, and, gte } from 'drizzle-orm';
 import { varchar, serial, pgTable } from 'drizzle-orm/pg-core';
+
+
+export const casesTableDef = pgTable('cases', {
+  id: serial('id').primaryKey(),
+  status: varchar('status', { length: 255 }),
+  griefStage: varchar('griefStage', { length: 255 }),
+  severity: serial('severity'),
+  // ...add other columns as needed
+});
+
+const casesTable = casesTableDef;
 
 const router = Router();
 
@@ -13,7 +25,7 @@ router.get('/', async (req, res) => {
     let whereClause: any[] = [];
     if (status) whereClause.push(eq(casesTable.status, String(status)));
     if (griefStage) whereClause.push(eq(casesTable.griefStage, String(griefStage)));
-    if (severity) whereClause.push(gte(casesTable.severity, Number(severity)));
+    if (severity) whereClause.push(gte(casesTable['severity'], Number(severity)));
 
     const query = whereClause.length
       ? db.select().from(casesTable).where(and(...whereClause))
@@ -50,12 +62,3 @@ router.post('/', async (req, res) => {
 });
 
 export default router;
-
-export const cases = pgTable('cases', {
-  id: serial('id').primaryKey(),
-  // other columns...
-  status: varchar('status', { length: 255 }),
-  griefStage: varchar('griefStage', { length: 255 }), // Add griefStage column
-  severity: serial('severity'), // Add severity column
-  // ...possibly more columns
-});

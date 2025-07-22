@@ -1,10 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
 import { Card, CardContent } from './ui/card';
-import { ScalesIcon, PlayCircleIcon, RefreshCcwIcon, DownloadIcon } from 'lucide-react';
+import { ScaleIcon, PlayCircleIcon, RefreshCcwIcon, DownloadIcon } from 'lucide-react';
 
 const actions = [
-  { href: '/tribunal', icon: ScalesIcon, label: 'Tribunal Room' },
+  { href: '/tribunal', icon: ScaleIcon, label: 'Tribunal Room' },
   { href: '/simulations', icon: PlayCircleIcon, label: 'Edge Case Simulations' },
   { href: '/rituals', icon: RefreshCcwIcon, label: 'Ritual Scheduler' },
   { href: '/export', icon: DownloadIcon, label: 'Export Console' },
